@@ -3,7 +3,9 @@
      <h1>esse é o index</h1>
      {% for u in user %}
          <div class="list">
-
+             <form action="" method="post">
+                 {{ u.name }} | {{ u.email }}
+             </form>
          </div>
      {% endfor %}
 {% endblock %}
