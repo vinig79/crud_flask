@@ -2,18 +2,20 @@
 {% block content %}
     <h1>esse é o index</h1>
     <form action="{{ url_for('index.delete') }}" method="post" >
-        <input type="submit" value="Delete">
-    </form>
-        <div class="list">
-
-        {% for u in user %}
-            <div class="user">
-               <input type="checkbox" name="list" value="{{u.id}}" > |{{ u.name }} | {{ u.email }}
-                <form action="{{ url_for('index.edit') }}" method="post" >
-                    <input type="submit" value="edit">
-                </form>
-            </div>
-        {% endfor %}
+        <div class="delete">
+             <input type="submit" value="Delete"><br />
         </div>
+        {% for u in user %}
+        <div class="user">
+            <input type="checkbox" name="id" value="{{u.id}}" > |{{ u.name }} | {{ u.email }}<br />
+            <form action="{{url_for('index.edit')}}" method="post">
+                <input type="hidden" name="user_id" value="{{u.id}}">
+                <input type="submit" value="Editar perfil">
+            </form>
+
+        </div>
+        {% endfor %}
+    </form>
+
 
 {% endblock %}

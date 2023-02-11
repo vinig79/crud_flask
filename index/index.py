@@ -14,7 +14,8 @@ def index():
 @index_bp.route("/delete", methods=["GET","POST"])
 def delete():
     if request.method == "POST":
-        a = request.form.getlist("list")
+        a = request.form.getlist("id")
+        print(a)
         for id in a:
             u = User.query.get(int(id))
             db.session.delete(u)
@@ -24,4 +25,7 @@ def delete():
 @index_bp.route("/edit", methods=["GET","POST"])
 def edit():
     form = Atualizar()
+    if request.method == "POST":
+        a = request.form.get("user_id")
+
     return render_template("atualiza.html", title="Atualiza", form=form)
